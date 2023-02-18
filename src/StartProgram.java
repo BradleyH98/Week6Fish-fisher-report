@@ -5,10 +5,10 @@ import controller.ReportHelper;
 import model.FishWeightLocationRep;
 
 public class StartProgram {
-	
+
 	static Scanner in = new Scanner(System.in);
 	static ReportHelper rp = new ReportHelper();
-	
+
 	private static void addAnEntery() {
 		System.out.print("Enter a name of a fish: ");
 		String fish = in.nextLine();
@@ -19,7 +19,7 @@ public class StartProgram {
 		FishWeightLocationRep toAdd = new FishWeightLocationRep(fish, weight, river);
 		rp.insertItem(toAdd);
 	}
-	
+
 	private static void editAnEntery() {
 		System.out.println("How would you like to search? ");
 		System.out.println("1 : Search by Fish");
@@ -31,17 +31,17 @@ public class StartProgram {
 		if (searchBy == 1) {
 			System.out.print("Enter the fish: ");
 			String fishName = in.nextLine();
-			foundItems	=	rp.searchForEnteryByFish(fishName);			
-		} else if (searchBy == 2 ){
+			foundItems = rp.searchForEnteryByFish(fishName);
+		} else if (searchBy == 2) {
 			System.out.print("Enter the river: ");
 			String riverName = in.nextLine();
-			foundItems	=	rp.searchForEnteryByRiver(riverName);
+			foundItems = rp.searchForEnteryByRiver(riverName);
 		} else {
 			System.out.print("Enter the weight: ");
 			String weight = in.nextLine();
-			foundItems	=	rp.searchForEnteryByWeight(weight);
+			foundItems = rp.searchForEnteryByWeight(weight);
 		}
-		
+
 		if (!foundItems.isEmpty()) {
 			System.out.println("Found Results.");
 			for (FishWeightLocationRep l : foundItems) {
@@ -78,7 +78,7 @@ public class StartProgram {
 			System.out.println("---- No results found");
 		}
 	}
-	
+
 	private static void deleteAnEntery() {
 		System.out.print("Enter a name of a fish to delete: ");
 		String fish = in.nextLine();
@@ -89,11 +89,11 @@ public class StartProgram {
 		FishWeightLocationRep toDelete = new FishWeightLocationRep(fish, weight, river);
 		rp.deleteItem(toDelete);
 	}
-	
+
 	public static void main(String[] args) {
 		runMenu();
 	}
-	
+
 	public static void runMenu() {
 		boolean goAgain = true;
 		System.out.println("--- Please choose and a subject to enter in for the fish population or location ---");
@@ -125,13 +125,13 @@ public class StartProgram {
 		}
 
 	}
-	
+
 	private static void viewTheList() {
-		List<FishWeightLocationRep>allItems = rp.showAllItems();
-		for(FishWeightLocationRep singleItem : allItems) {
+		List<FishWeightLocationRep> allItems = rp.showAllItems();
+		for (FishWeightLocationRep singleItem : allItems) {
 			System.out.println(singleItem.getDataID() + " " + singleItem.returnReport());
 		}
 
 	}
-	
+
 }
