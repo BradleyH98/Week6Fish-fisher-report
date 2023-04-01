@@ -4,10 +4,30 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Fish Weight Location Report</title>
+	<script>
+		function validateInput() {
+			if (document.newFish.fish.value == "") {
+				alert("the fish name is missing");
+				document.newFish.fish.focus();
+				return false;
+			}
+			if (document.newFish.weight.value == "") {
+				alert("the fish weight is missing");
+				document.newFish.weight.focus();
+				return false;
+			}
+			if (document.newFish.river.value == "") {
+				alert("the river name is missing");
+				document.newFish.river.focus();
+				return false;
+			}
+			return(true);
+		}
+	</script>
 </head>
 <body>
 	<h1>Please enter the name, weight (pounds), and river name of the fish</h1>
-		<form action = "addItemsServlet" method="post">
+		<form name="newFish" action = "addItemsServlet" onsubmit="return validateInput()" method="post">
 		Fish: <input type ="text" name = "fish"> <br />
 		Weight: <input type = "text" name = "weight"> <br />
 		River: <input type="text" name = "river"> <br /><br />

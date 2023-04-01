@@ -7,9 +7,39 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+	<script>
+		function validateInput() {
+			if (document.newList.reportName.value == "") {
+				alert("the report name is missing");
+				document.newList.reportName.focus();
+				return false;
+			}
+			if (document.newList.month.value == "") {
+				alert("the month for the date is missing");
+				document.newList.month.focus();
+				return false;
+			}
+			if (document.newList.day.value == "") {
+				alert("the day of the date is missing");
+				document.newList.day.focus();
+				return false;
+			}
+			if (document.newList.year.value == "") {
+				alert("the year of the date is missing");
+				document.newList.year.focus();
+				return false;
+			}
+			if (document.newList.fisherName.value == "") {
+				alert("the fisher's name is missing");
+				document.newList.fisherName.focus();
+				return false;
+			}
+			return(true);
+		}
+	</script>
 </head>
 <body>
-<form action = "createNewListServlet" method="post">
+<form name="newList" action = "createNewListServlet" onsubmit="return validateInput()" method="post">
 	Report Name: <input type ="text" name = "reportName"><br />
 	Report date: <input type ="text" name = "month" placeholder="mm"
 	size="4"> <input type ="text" name = "day" placeholder="dd"

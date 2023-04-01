@@ -7,9 +7,39 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+	<script>
+		function validateInput() {
+			if (document.editList.reportName.value == "") {
+				alert("the report name is missing");
+				document.editList.reportName.focus();
+				return false;
+			}
+			if (document.editList.month.value == "") {
+				alert("the month for the date is missing");
+				document.editList.month.focus();
+				return false;
+			}
+			if (document.editList.day.value == "") {
+				alert("the day of the date is missing");
+				document.editList.day.focus();
+				return false;
+			}
+			if (document.editList.year.value == "") {
+				alert("the year of the date is missing");
+				document.editList.year.focus();
+				return false;
+			}
+			if (document.editList.fisherName.value == "") {
+				alert("the fisher's name is missing");
+				document.editList.fisherName.focus();
+				return false;
+			}
+			return(true);
+		}
+	</script>
 </head>
 <body>
-<form action = "editListDetailServlet" method="post">
+<form name="editList" action = "editListDetailServlet" onsubmit="return validateInput()" method="post">
 <input type ="hidden" name = "id" value= "${reportToEdit.id}">
 	Report Name: <input type ="text" name = "reportName" value= "${reportToEdit.reportName}"><br />
 	Report date: <input type ="text" name = "month" placeholder="mm" size="4" value= "${month}">
